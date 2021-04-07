@@ -1,0 +1,94 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+    <div class="container">
+        <div class="jumbotron text-center" style="background-color:rgba(211, 213, 221, 0.794)">
+        <h2>SENTIMENT ANALYSIS APP</h2>
+        <p>Predict Sentiment Review</p>
+        </div>
+    </div>
+
+<div class="container">
+        <form method="POST" action="{{url_for('predict')}}">
+        <label > Enter Review Below:</label>
+        <textarea class="form-control" rows="4" cols="8" name="reviewText"></textarea>
+        <br/>
+        <input type="submit" class="btn btn-primary" value ="PREDICT">
+        <a href="{{ url_for('index')}}" type="button" class="btn btn-danger">  Reset</a>
+    </form>
+</div>
+<div class="container">
+  {% if prediction == 0 %}
+  <h2 style="color:red;">Negative</h2>
+  {% elif prediction == 1 %}
+  <h2 style="color:rgb(13, 156, 89);">Neutral</h2>
+  {% elif prediction == 2 %}
+  <h2 style="color:rgb(93, 127, 202);">Positive</h2>
+  {% endif %}
+</div> 
+</div> 
+<hr/>
+<hr/>
+<hr/>
+
+<div class="container"> 
+  <!--
+      <div class="jumbotron text-center" style="background-color:pink">
+      <h2>SENTIMENT ANALYSIS APP</h2>
+      -->
+      <h3>Find the Sentiment Polarity and Subjectivity</h3>
+  </div>
+</div>
+
+
+<div class="container">
+  <form method="POST" action="{{url_for('analyse')}}">
+  <label> Enter Review Below:</label>
+  <textarea class="form-control" rows="4" cols="8" name="reviewText"></textarea>
+  <br/>
+  <input type="submit" class="btn btn-primary" value ="Submit">
+  <a href="{{ url_for('index')}}" type="button" class="btn btn-danger">  Reset</a>
+</form>
+</div>
+
+<div class="container">
+    <h5 class="card-title"><div class="alert alert-secundary" role="alert">
+  This review has {{ number_of_tokens}} tokens.
+    </div> </h5>
+    <div class="card-text">
+    <p style="color:#0091EA;font-family:sans-serif;">
+    {{ received_text }}</p>
+    </div>
+
+    <p>Time Elapsed: <span style= color:#0091EA; >{{final_time }} 
+    </span> seconds to analyse</p>
+
+    {% for i in summary %}
+    <li>{{i}}</li> 
+    {% endfor%}
+
+    </div>
+    <div class="container">
+    <table class="table table-striped table-dark" >
+    <thead>
+    <tr>
+    <th scope="col">Sentiment</th>
+    <th scope="col">Polarity</th>
+    <th scope="col">Subjectivity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <th scope="row">Score:</th>
+    <td>{{blob_sentiment}}</td>
+    <td>{{blob_subjectivity}}</td>
+    </tr>
+    </tbody></table>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+
+
