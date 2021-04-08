@@ -26,6 +26,9 @@ Bootstrap(app)
 def index():
     return render_template('index.html')
 
+@app.route('/')   #Add a decorator
+def results():
+    return render_template('index.html')
 
 
 @app.route('/analyse',methods=['POST'])  
@@ -63,7 +66,7 @@ def predict():
     ###Loading model
     filepath = 'model.pkl'
     with gzip.open(filepath, 'rb') as f:
-        p = pickle.Unpickler(f, encoding='ASCII', errors='strict', buffers=())
+        p = pickle.Unpickler(f)
         gridsearch_svc_pipe = p.load()
 
     if request.method=='POST':
