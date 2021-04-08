@@ -26,9 +26,6 @@ Bootstrap(app)
 def index():
     return render_template('index.html')
 
-@app.route('/')   #Add a decorator
-def results():
-    return render_template('index.html')
 
 
 @app.route('/analyse',methods=['POST'])  
