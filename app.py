@@ -63,7 +63,7 @@ def predict():
     ###Loading model
     filepath = 'model.pkl'
     with gzip.open(filepath, 'rb') as f:
-        p = pickle.Unpickler(f)
+        p = pickle.Unpickler(f, encoding='ASCII', errors='strict', buffers=())
         gridsearch_svc_pipe = p.load()
 
     if request.method=='POST':
