@@ -61,8 +61,7 @@ def analyse():
 #To use the predict button in our web-app
 @app.route('/predict', methods=['POST'])
 def predict():
-    train_set = pd.read_csv('train_set.csv')
-
+    #train_set = pd.read_csv('train_set.csv')
     ###Loading model
     filepath = 'model.pkl'
     with gzip.open(filepath, 'rb') as f:
