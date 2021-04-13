@@ -31,7 +31,7 @@ def results():
     return render_template('index.html')
 
 
-@app.route('/analyse',methods=['POST'])  
+@app.route('/analyse',methods=['GET','POST'])  
 def analyse():
     start = time.time()
     if request.method == 'POST':
@@ -83,4 +83,4 @@ def predict():
 
 
 if __name__=='__main__':
-    app.run(debug=False)
+    app.run(debug=True)
