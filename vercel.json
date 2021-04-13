@@ -2,7 +2,7 @@
     "name":"Our ML App",
     "version": 2,
     "builds": [{
-        "src":"*py",
+        "src":"./index.py",
         "use": "@vercel/python"
     }],
     "routes": [
