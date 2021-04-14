@@ -25,6 +25,13 @@
   {% elif prediction == 2 %}
   <h2 style="color:rgb(93, 127, 202);">Positive</h2>
   {% endif %}
+  <div class="card-text">
+    <p style="color:#1b197c;font-family:sans-serif;">
+    {{ corpus }}</p>
+    </div>
+  {% for i in corpus %}
+    <li>{{i}}</li> 
+    {% endfor%}
 </div> 
 </div> 
 <hr/>

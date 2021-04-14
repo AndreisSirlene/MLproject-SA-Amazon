@@ -31,9 +31,11 @@ def results():
     return render_template('index.html')
 
 
-@app.route('/analyse',methods=['POST'])  
+@app.route('/analyse',methods=['GET','POST'])  
 def analyse():
     start = time.time()
+    if request.method == 'GET':
+        return render_template('index.html')
     if request.method == 'POST':
         reviewText = request.form['reviewText']
         #NLP analysis
@@ -59,7 +61,7 @@ def analyse():
 
 
 #To use the predict button in our web-app
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
     #train_set = pd.read_csv('train_set.csv')
     ###Loading model
@@ -79,7 +81,7 @@ def predict():
         review = ' '.join(review)
         corpus = [review]
         pred = gridsearch_svc_pipe.predict(corpus)
-    return render_template('index.html',prediction=pred)
+    return render_template('index.html',prediction=pred, corpus=corpus)
 
 
 if __name__=='__main__':
