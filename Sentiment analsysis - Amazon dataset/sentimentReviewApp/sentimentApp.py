@@ -5,7 +5,7 @@ import pandas as pd
 import time
 
 #NPL
-from textblob import TextBlob, Word
+#from textblob import TextBlob, Word
 import re  ## To use Regular expression
 import string
 import nltk
@@ -15,7 +15,13 @@ from sklearn.svm import SVC, LinearSVC
 from sklearn.feature_extraction.text import CountVectorizer
 import random
 import pickle, pickletools, gzip
+import joblib
 
+
+ ###Loading model
+gridsearch_svc_pipe=joblib.load("./pkl_object/model.pkl")
+#loaded_stop=joblib.load("./pkl_objects/stopwords.pkl")
+#loaded_vec=joblib.load("./pkl_objects/vectorizer.pkl")
 
 #Initialize the app
 app = Flask(__name__)
@@ -63,13 +69,6 @@ def analyse():
 #To use the predict button in our web-app
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    #train_set = pd.read_csv('train_set.csv')
-    ###Loading model
-    filepath = 'model.pkl'
-    with gzip.open(filepath, 'rb') as f:
-        p = pickle.Unpickler(f)
-        gridsearch_svc_pipe = p.load()
-
     if request.method=='POST':
         reviewText = request.form['reviewText'] ##requesting new review from the input field
         review = re.sub('[^a-zA-Z]', ' ', reviewText)
@@ -85,5 +84,5 @@ def predict():
 
 
 if __name__=='__main__':
-    app.run()
+    app.run(debug=True)
 

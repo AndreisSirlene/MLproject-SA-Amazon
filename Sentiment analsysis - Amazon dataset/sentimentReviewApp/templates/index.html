@@ -11,7 +11,7 @@
 <div class="container">
         <form method="POST" action="{{url_for('predict')}}">
         <label > Enter Review Below:</label>
-        <textarea class="form-control" rows="6" cols="40" name="reviewText"></textarea>
+        <textarea class="form-control" rows="10" cols="30" name="reviewText"></textarea>
         <br/>
         <input type="submit" class="btn btn-primary" value ="PREDICT">
         <a href="{{ url_for('index')}}" type="button" class="btn btn-danger">  Reset</a>
