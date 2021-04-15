@@ -2,14 +2,12 @@
 
 ## Sentiment Analysis - Amazon dataset
 
-##Market Basket Analysis - Walmart dataset
+## Market Basket Analysis - Walmart dataset
 
 > “Education is the most powerful weapon which you can use to change the world.” Nelson Mandela
 
-<br />
-<p align="center"><img src=".github/sentimentApp.gif?raw=true"/></p>
-Sentiment analsysis - Amazon dataset/sentimentReviewApp/sentimentApp.gif
----
+![](https://github.com/AndreisSirlene/OURMLAPP/blob/main/Sentiment%20analsysis%20-%20Amazon%20dataset/sentimentReviewApp/sentimentApp.gif)
+
 
 # :pushpin: Table of Contents
 * [Made With](#rocket-made-with)
