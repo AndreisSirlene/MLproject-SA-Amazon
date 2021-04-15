@@ -5,7 +5,7 @@ import pandas as pd
 import time
 
 #NPL
-#from textblob import TextBlob, Word
+from textblob import TextBlob, Word
 import re  ## To use Regular expression
 import string
 import nltk
@@ -19,9 +19,7 @@ import joblib
 
 
  ###Loading model
-gridsearch_svc_pipe=joblib.load("./pkl_object/model.pkl")
-#loaded_stop=joblib.load("./pkl_objects/stopwords.pkl")
-#loaded_vec=joblib.load("./pkl_objects/vectorizer.pkl")
+gridsearch_svc_pipe=joblib.load('./pkl_object/model.pkl')
 
 #Initialize the app
 app = Flask(__name__)
@@ -80,7 +78,7 @@ def predict():
         review = ' '.join(review)
         corpus = [review]
         pred = gridsearch_svc_pipe.predict(corpus)
-    return render_template('index.html',prediction=pred, corpus=corpus)
+    return render_template('index.html',prediction=pred)
 
 
 if __name__=='__main__':
